@@ -49,14 +49,14 @@
                         <td><label>Phone Number</label></td>
                         <td><input type="text" name="phoneNumber" value="${param.phoneNumber}"/></td>
                     </tr>
-                    <tr>
+                    <%--<tr>
                         <td><label>Primary Care Physician ID</label></td>
                         <td><input type="text" name="primaryCarePhysicianID" value="${param.primaryCarePhysicianID}"/></td>
                     </tr>
                     <tr>
                         <td><label>Nurse ID</label></td>
                         <td><input type="text" name="nurseID" value="${param.nurseID}"/></td>
-                    </tr>
+                    </tr>--%>
                     <tr>
                         <td><label>Date of Birth</label></td>
                         <td class="input-group date"><input type="text" name="dob" value="${param.dob}" class="form-control"/>

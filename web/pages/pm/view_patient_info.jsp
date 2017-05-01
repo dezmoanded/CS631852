@@ -11,6 +11,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
         <h1>View Patient Information</h1>
@@ -23,13 +25,14 @@
             <table border="0" cellspacing="2" cellpadding="5">
                 <thead>
                     <tr>
-                        <th colspan="2">Enter Patient Name</th>
+                        <th colspan="3">Enter Patient Name</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><label>Name</label></td>
                         <td><input type="text" name="name"/></td>
+                        <td><button type="submit">Find Patient</button></td>
                     </tr>
                 </tbody>
             </table>

@@ -19,7 +19,7 @@
     </body>
     
     <body>
-        <form action="add_remove_staff_member_db_a_1_2" method="post">
+        <form action="add_remove_staff_member_db_a_1_2.jsp" method="post">
             <table border="0" cellspacing="2" cellpadding="5">
                 <thead>
                     <tr>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr>
                         <td><label>Employee Number</label></td>
-                        <td><input type="text" name="grade"/></td>
+                        <td><input type="text" name="employeeNumber"/></td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Save" /></td>

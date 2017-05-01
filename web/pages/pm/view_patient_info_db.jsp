@@ -26,7 +26,7 @@
         address, 
         phoneNumber, 
         primaryCarePhysicianID, nurseID, 
-        dob, 
+        DATE_FORMAT(dob, '%Y-%m-%d') AS DOB, 
         bloodType
     FROM Persons, Patients
     WHERE Persons.ID = Patients.ID
@@ -34,7 +34,7 @@
     <sql:param value="${fn:replace(param.name, ' ', '%')}" />
 </sql:query>
     
-    <c:import url="/includes/tableTable.jsp" />
+    <c:import url="/includes/patientRadioTable.jsp" />
         <br><br>
         
         <a href="javascript:goTo('schedule_appt')">Schedule Appointment</a>

@@ -14,3 +14,21 @@
 <script src="<c:url value="/js/bootstrap.js" />"></script>
 <script src="<c:url value="/js/moment.min.js" />"></script>
 <script src="<c:url value="/js/bootstrap-datetimepicker.min.js" />"></script>
+
+<style>
+    body {
+        padding: 16px;
+    }
+    .dataTable th, .dataTable td {
+        border: black 1px solid;
+    }
+    th, td {
+        padding: 4px;
+    }
+    a {
+        padding: 8px;
+        background-color: rgba(255, 235, 205, 0.63);
+        margin: 8px;
+        display: inline-block;
+    }
+</style>

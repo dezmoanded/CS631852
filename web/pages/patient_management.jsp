@@ -10,6 +10,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
         <h1>Newark Medical Associates(NMA)</h1><table border="0">
@@ -25,7 +27,7 @@
                 <tr>
                     <td><a href="pm/view_patient_info.jsp">View patient information</a></td>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td><a href="pm/schedule_appt.jsp">Schedule an appointment with a doctor</a></td>
                 </tr>
                 <tr>
@@ -33,7 +35,7 @@
                 </tr>
                 <tr>
                     <td><a href="pm/v_sched_doc_day.jsp">View scheduled per doctor per day</a></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td></td>
                 </tr>

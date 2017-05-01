@@ -12,6 +12,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
         <h1>Insert Patient</h1>
@@ -26,21 +28,19 @@
  
         </c:if>
         
-<sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver"
-     url="jdbc:mysql://localhost/cs631"
-     user="root"  password="go"/>
+        <jsp:include page="/includes/db.jsp" />
 
 
 
-<sql:update var="patient" dataSource="${snapshot}">
-    INSERT INTO Persons (name, SSN, gender, address, phoneNumber)
-    VALUES (?,?,?,?,?);
-    <sql:param value="${param.name}" />
-    <sql:param value="${param.SSN}" />
-    <sql:param value="${param.gender}" />
-    <sql:param value="${param.address}" />
-    <sql:param value="${param.phoneNumber}" />
-</sql:update>
+    <sql:update var="patient" dataSource="${snapshot}">
+        INSERT INTO Persons (name, SSN, gender, address, phoneNumber)
+        VALUES (?,?,?,?,?);
+        <sql:param value="${param.name}" />
+        <sql:param value="${param.SSN}" />
+        <sql:param value="${param.gender}" />
+        <sql:param value="${param.address}" />
+        <sql:param value="${param.phoneNumber}" />
+    </sql:update>
     
     <sql:update var="patient" dataSource="${snapshot}">
         INSERT INTO Patients (ID, primaryCarePhysicianID,nurseID,dob,bloodType)
@@ -53,7 +53,7 @@
 
         
         <a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a>
-<c:if test="${result>=1}">
+        <c:if test="${result>=1}">
             <font size="5" color='green'> Congratulations ! Data inserted
             successfully.</font>
  

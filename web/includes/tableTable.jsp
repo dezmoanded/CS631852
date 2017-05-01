@@ -6,7 +6,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<table  align="left" border="1">
+<table class="dataTable">
     <!-- column headers -->
     <tr>
     <c:forEach var="columnName" items="${table.columnNames}">
@@ -18,7 +18,9 @@
 <c:forEach var="row" items="${table.rowsByIndex}">
     <tr>
     <c:forEach var="column" items="${row}">
-        <td><c:out value="${column}"/></td>
+        <td><c:out value="${column}"/>
+        </td>
     </c:forEach>    
     </tr>
 </c:forEach>
+</table>

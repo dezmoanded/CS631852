@@ -22,27 +22,32 @@
             </c:redirect>
  
         </c:if>
+    <jsp:include page="/includes/db.jsp" />
+    <sql:update var="physician" dataSource="${snapshot}">
+        INSERT INTO Persons (name,SSN,gender,address,phoneNumber)
+        VALUES (?,?,?,?,?);
+        <sql:param value="${param.name}" />
+        <sql:param value="${param.SSN}" />
+        <sql:param value="${param.gender}" />
+        <sql:param value="${param.address}" />
+        <sql:param value="${param.phoneNumber}" />
+    </sql:update>
+    <sql:update var="physician" dataSource="${snapshot}">
+        INSERT INTO Employees (ID, Salary, employeeNumber)
+        Select ID, ?, ? from Persons order by ID desc limit 1;
+        <sql:param value="${param.salary}" />
+        <sql:param value="${param.employeeNumber}" />
+    </sql:update>
+     <sql:update var="physician" dataSource="${snapshot}">
+        INSERT INTO Physicians (ID, speciality)
+        Select ID, ? from Persons order by ID desc limit 1;
+        <sql:param value="${param.specialty}" />
+     </sql:update>
 
-<sql:update var="physician" dataSource="jdbc/HospitalDatabase">
-    INSERT INTO Persons (name,SSN,gender,address,phoneNumber)
-    VALUES (?,?,?,?,?)
-    <sql:param value="${param.name}" />
-    <sql:param value="${param.SSN}" />
-    <sql:param value="${param.gender}" />
-    <sql:param value="${param.address}" />
-    <sql:param value="${param.phoneNumber}" />
-    INSERT INTO Physicians (specialty)
-    VALUES (?)
-    <sql:param value="${param.specialty}" />
-    INSERT INTO Employee (Salary, employeeNumber)
-    VALUES (?,?)
-    <sql:param value="${param.salary}" />
-    <sql:param value="${param.employeeNumber}" />
-</sql:update>
 
         
         <a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a>
-<c:if test="${result>=1}">
+    <c:if test="${result>=1}">
             <font size="5" color='green'> Congratulations ! Data added
             successfully.</font>
  

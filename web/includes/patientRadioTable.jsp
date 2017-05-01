@@ -6,7 +6,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<table>
+<table class="dataTable">
     <!-- column headers -->
     <tr>
     <c:forEach var="columnName" items="${table.columnNames}">
