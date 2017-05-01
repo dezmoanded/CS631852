@@ -33,8 +33,9 @@
             </c:when>
             <c:otherwise>
                 <form target="schedule_appt.jsp">
+                    <input type="hidden" name="patientID" value="${param.patientID}"/>
                 <sql:query var="table" dataSource="${snapshot}" scope="request">
-            SELECT Persons.ID, SSN, 
+            SELECT SSN, 
                 name, 
                 address, 
                 phoneNumber, 
