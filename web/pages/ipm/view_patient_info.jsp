@@ -1,47 +1,38 @@
 <%-- 
-    Document   : add_remove_staff_member_db_r_3
-    Created on : Apr 27, 2017, 7:32:04 PM
+    Document   : view_patient_info
+    Created on : Apr 20, 2017, 2:31:41 AM
     Author     : bakfark
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
-        <h1>Remove Support Staff</h1>
+        <h1>View Patient Information</h1>
         
         
     </body>
     
     <body>
-        <form action="add_remove_staff_member_db_r_3_2.jsp" method="post">
+        <form action="view_patient_info_db.jsp" method="post">
             <table border="0" cellspacing="2" cellpadding="5">
                 <thead>
                     <tr>
-                        <th colspan="2">Enter Support Staff Name</th>
+                        <th colspan="3">Enter Patient Name</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><label>Name</label></td>
-                        <td><jsp:include page="/includes/db.jsp" />
-                            <sql:query var="staff" dataSource="${snapshot}" scope="request">
-                                SELECT Persons.ID, Persons.name from SupportStaff, Persons where SupportStaff.ID = Persons.ID
-                            </sql:query>
-
-                            <select name="ID">
-                                <option>Select a Staff Member</option>
-                                <c:forEach var="row" items="${staff.rows}">
-                                    <option value="${row.ID}">${row.name}</option>
-                                </c:forEach>
-                            </select>
-                                <button type="submit">Remove</button></td>
+                        <td><input type="text" name="name"/></td>
+                        <td><button type="submit">Find Patient</button></td>
                     </tr>
                 </tbody>
             </table>

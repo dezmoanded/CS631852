@@ -12,13 +12,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
         <h1>Staff</h1>
     </body>
- 
-<sql:query var="supportstaff1" dataSource="jdbc/HospitalDatabase">
-    SELECT *
+ <jsp:include page="/includes/db.jsp" />
+<sql:query var="supportstaff1" dataSource="${snapshot}">
+    SELECT SSN, name, gender, address, phoneNumber, employeeNumber, salary
     FROM SupportStaff, Persons, Employees
     WHERE Persons.ID = Employees.ID
     AND SupportStaff.ID = Employees.ID

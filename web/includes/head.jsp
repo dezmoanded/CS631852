@@ -31,4 +31,30 @@
         margin: 8px;
         display: inline-block;
     }
+    
+    #clinics div {
+        display: inline-block;
+        padding: 8px;
+    }
+    #clinics div .t {
+        background-color: rgba(222, 184, 135, 0.81);
+    }
+    #clinics div div .t {
+        background-color: rgba(135, 222, 184, 0.81);
+    }
+    #clinics div div div .t {
+        background-color: rgba(184, 135, 222, 0.81);
+        font-weight: bold;
+    }
+    #clinics > div > div > div:not(.t) {
+        border: 1px solid rgba(184, 135, 222, 0.81);
+        padding: 0px;
+        margin: 8px;
+    }
+    #clinics > div > div > div {
+
+    }
+    .t {
+        width: 100%;
+    }
 </style>

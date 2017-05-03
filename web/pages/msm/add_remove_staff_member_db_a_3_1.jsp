@@ -19,7 +19,7 @@
     </body>
     
     <body>
-        <form action="add_remove_staff_member_db_a_3_2" method="post">
+        <form action="add_remove_staff_member_db_a_3_2.jsp" method="post">
             <table border="0" cellspacing="2" cellpadding="5">
                 <thead>
                     <tr>

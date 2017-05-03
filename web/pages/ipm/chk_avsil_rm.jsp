@@ -18,6 +18,43 @@
     </head>
     <body>
         <h1>Check for available rooms</h1>
+        <form method="post">
+            From 
+        <div class="input-group date"><input type="text" name="from" class="form-control" value="${param.from}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span></div>
+        
+                        To 
+        <div class="input-group date"><input type="text" name="to" class="form-control" value="${param.to}"/>
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span></div>
+            
+            <button type="submit">Check rooms</button>
+        </form>
+        
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('.date').datetimepicker({format: "YYYY-MM-DD hh:mm"});
+
+                $("input[type=reset]").on('click', function(e){
+                    e.preventDefault();
+                    $('input[type=text]').val('');
+                });
+            });
+        </script>
+        
+        <c:set var="sqt" value="'"/>
+        <c:set var="from" value="'${param.from}'" />
+        <c:set var="to" value="'${param.to}'"/>
+        <c:if test="${empty param.from}">
+            <c:set var="from" value="NOW()" />
+        </c:if>
+        <c:if test="${empty param.to}">
+            <c:set var="to" value="NOW()" />
+        </c:if>
+        
         <jsp:include page="/includes/db.jsp" />
         <sql:query var="beds" dataSource="${snapshot}">
             SELECT roomNum, wing, clinicName, bed from (
@@ -27,8 +64,8 @@
                             and not exists (
                                 SELECT * from Visits V 
                                 where V.roomID = R.ID
-                                                            and V.dateOfAdmission < NOW()
-                                                            and V.dateLeft > NOW()
+                                    and ((V.dateOfAdmission < ${from} and V.dateLeft > ${from})
+                                        or (V.dateOfAdmission < ${to} and V.dateLeft > ${to}))
                                     and V.bedNumber = 0)
             UNION
             SELECT R.roomNum as roomNum, R.wing as wing, C.clinicName as clinicName, 1 as bed
@@ -37,8 +74,8 @@
                             and not exists (
                                 SELECT * from Visits V 
                                 where V.roomID = R.ID
-                                                            and V.dateOfAdmission < NOW()
-                                                            and V.dateLeft > NOW()
+                                    and ((V.dateOfAdmission < ${from} and V.dateLeft > ${from})
+                                        or (V.dateOfAdmission < ${to} and V.dateLeft > ${to}))
                                     and V.bedNumber = 1)
             ) O group by clinicName, wing, roomNum, bed
         </sql:query>
@@ -66,33 +103,5 @@
                     })
                 </script>
         <a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a>
-
-        <style>
-            #clinics div {
-                display: inline-block;
-                padding: 8px;
-            }
-            #clinics div .t {
-                background-color: rgba(222, 184, 135, 0.81);
-            }
-            #clinics div div .t {
-                background-color: rgba(135, 222, 184, 0.81);
-            }
-            #clinics div div div .t {
-                background-color: rgba(184, 135, 222, 0.81);
-                font-weight: bold;
-            }
-            #clinics > div > div > div:not(.t) {
-                border: 1px solid rgba(184, 135, 222, 0.81);
-                padding: 0px;
-                margin: 8px;
-            }
-            #clinics > div > div > div {
-                
-            }
-            .t {
-                width: 100%;
-            }
-        </style>
     </body>
 </html>

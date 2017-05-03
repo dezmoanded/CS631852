@@ -14,21 +14,26 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World! 2</h1>
-    </body>
+
+        <jsp:include page="/includes/db.jsp" />
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM Physicians
+        WHERE ID = ${param.ID}
+    </sql:update>
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM Employees
+        WHERE ID = ${param.ID}
+    </sql:update>
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM Persons
+        WHERE Persons.ID = ${param.ID}
+    </sql:update>
     
-    <body>
-    <sql:update dataSource="${dbsource}" var="count">
-            DELETE FROM Persons,Employees,Physician
-            WHERE Persons.name='${param.name}'
-            AND Persons.ID = Employees.ID
-            AND Physicians.ID = Persons.ID
-        </sql:update>
-        <c:if test="${count>=1}">
-            <font size="5" color='green'> Congratulations ! Data deleted
-            successfully.</font>
-              <a href="index.jsp">Go Home</a>          
-        </c:if>
+    <c:if test="${count>=1}">
+        <font size="5" color='green'> Congratulations ! Data deleted
+        successfully.</font>
+          <a href="index.jsp">Go Home</a>          
+    </c:if>
     </body>
     
 </html>

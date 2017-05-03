@@ -23,6 +23,9 @@
                     <td><a href="ipm/chk_avsil_rm.jsp">Check for available room/bed</a></td>
                 </tr>
                 <tr>
+                    <td><a href="ipm/view_patient_info.jsp">View Patient Info</a></td>
+                </tr>
+<!--                <tr>
                     <td><a href="ipm/asnrm_pat_rm.jsp">Assign/Remove a patient to a room/bed</a></td>
                 </tr>
                 <tr>
@@ -30,7 +33,7 @@
                 </tr>
                 <tr>
                     <td><a href="ipm/asnrm_nurse_pat.jsp">Assign/Remove a nurse to a patient</a></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td><a href="ipm/v_sched_surg_room_day.jsp">View scheduled surgery per room and per day</a></td>
                 </tr>
@@ -40,9 +43,9 @@
                 <tr>
                     <td><a href="ipm/book_surg.jsp">Book a surgery</a></td>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td><a href="ipm/v_sched_surg_pat.jsp">View scheduled surgery per patient</a></td>
-                </tr>
+                </tr>-->
                 <tr>
                     <td></td>
                 </tr>

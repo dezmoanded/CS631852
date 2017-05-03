@@ -4,15 +4,41 @@
     Author     : bakfark
 --%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Surgery Schedule</h1>
+        
+        <jsp:include page="/includes/db.jsp" />
+        <sql:query var="table" dataSource="${snapshot}" scope="request">
+            SELECT TRIM(A.name) AS Patient, 
+                TRIM(B.name) AS Surgeon, 
+                
+                DATE_FORMAT(SurgerySchedule.when, '%Y-%m-%d %h:%i') AS Date
+            FROM Persons P, 
+                Persons D, 
+                Patients, 
+                Surgeons, 
+                SurgerySchedule,
+                OperatingTheatre, TODO
+            WHERE Patients.ID = SurgerySchedule.patientID
+                and Surgeons.ID = SurgerySchedule.surgeonID
+                and P.ID = Patients.ID
+                and D.ID = Surgeons.ID
+                and Patients.ID = ?
+            <sql:param value="${param.patientID}"/>
+        </sql:query>
+            
+            <jsp:include page="/includes/tableTable.jsp"/>
         <a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a>
 
     </body>

@@ -47,15 +47,15 @@
 
         
         <a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a>
-    <c:if test="${result>=1}">
+
             <font size="5" color='green'> Congratulations ! Data added
             successfully.</font>
  
-            <c:redirect url="add_remove_staff_member_db_a_1_1" >
+            <c:redirect url="add_remove_staff_member_db_a_1_1.jsp" >
                 <c:param name="susMsg" value="Congratulations ! Data added
             successfully." />
             </c:redirect>
-        </c:if> 
+
     </body>
 </html>
 

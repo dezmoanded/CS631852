@@ -80,9 +80,6 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('.date').datetimepicker({format: "YYYY-MM-DD hh:mm"});
-    //            $('.date').datetimepicker('setDate', new Date(2000, 11, 24));
-    //            $('.date').datetimepicker('update');
-    //            $('.date').val('');
 
                 $("input[type=reset]").on('click', function(e){
                     e.preventDefault();

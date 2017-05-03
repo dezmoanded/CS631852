@@ -13,14 +13,17 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Newark Medical Associates(NMA)</title>
+        <jsp:include page="/includes/head.jsp" />
     </head>
     <body>
         <h1>Nurse</h1>
     </body>
- 
-<sql:query var="nurses1" dataSource="jdbc/HospitalDatabase">
-    SELECT *
-    FROM Nurses, Persons, Employees
+ <jsp:include page="/includes/db.jsp" />
+<sql:query var="nurses1" dataSource="${snapshot}">
+    SELECT SSN, name, gender, address, phoneNumber, employeeNumber, salary, grade, 
+    TRIM(S.nameCategory) as 'Surgery Type', yearsOfExperience
+    FROM Persons, Employees, Nurses 
+    LEFT JOIN SurgeryType S ON S.ID = Nurses.surgeryTypeID
     WHERE Persons.ID = Employees.ID
     AND Nurses.ID = Employees.ID
 </sql:query>

@@ -18,12 +18,20 @@
     </body>
     
     <body>
-    <sql:update dataSource="${dbsource}" var="count">
-            DELETE FROM Persons,Employees,SupportStaff
-            WHERE Persons.name='${param.name}'
-            AND Persons.ID = Employees.ID
-            AND SupportStaff.ID = Persons.ID
-        </sql:update>
+            <jsp:include page="/includes/db.jsp" />
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM SupportStaff
+        WHERE ID = ${param.ID}
+    </sql:update>
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM Employees
+        WHERE ID = ${param.ID}
+    </sql:update>
+    <sql:update dataSource="${snapshot}" var="count">
+        DELETE FROM Persons
+        WHERE Persons.ID = ${param.ID}
+    </sql:update>
+        
         <c:if test="${count>=1}">
             <font size="5" color='green'> Congratulations ! Data deleted
             successfully.</font>

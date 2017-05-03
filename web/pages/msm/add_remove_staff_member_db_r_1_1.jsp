@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,17 +21,30 @@
     </body>
     
     <body>
-        <form action="add_remove_staff_member_db_r_1_2" method="post">
+        <form action="add_remove_staff_member_db_r_1_2.jsp" method="post">
             <table border="0" cellspacing="2" cellpadding="5">
                 <thead>
                     <tr>
-                        <th colspan="2">Enter Physician Name</th>
+                        <th colspan="2">Remove Physician</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><label>Name</label></td>
-                        <td><input type="text" name="name"/></td>
+                        <td><jsp:include page="/includes/db.jsp" />
+                            <sql:query var="physicians" dataSource="${snapshot}" scope="request">
+                                SELECT Persons.ID, Persons.name from Physicians, Persons where Physicians.ID = Persons.ID
+                                    and Physicians.ID not in (SELECT ID from Surgeons)
+                            </sql:query>
+
+                            <select name="ID">
+                                <option>Select a Physician</option>
+                                <c:forEach var="row" items="${physicians.rows}">
+                                    <option value="${row.ID}">${row.name}</option>
+                                </c:forEach>
+                            </select>
+                                <button type="submit">Remove</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
