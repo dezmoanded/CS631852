@@ -28,6 +28,7 @@
         <a href="javascript:goTo('asnrm_doc_pat')">Assign/Remove a doctor to a patient</a>
         <a href="javascript:goTo('asnrm_nurse_pat')">Assign/Remove a nurse to a patient</a>
         <a href="javascript:goTo('v_sched_surg_pat')">View Surgery Schedule</a>
+        <a href="javascript:goTo('book_surg')">Book a surgery</a>
         
         <div><a href="#" onClick="history.go(-1);return true;">Send Me Back A Page!</a></div>
         

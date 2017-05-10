@@ -20,20 +20,23 @@
         
         <jsp:include page="/includes/db.jsp" />
         <sql:query var="table" dataSource="${snapshot}" scope="request">
-            SELECT TRIM(A.name) AS Patient, 
-                TRIM(B.name) AS Surgeon, 
-                
-                DATE_FORMAT(SurgerySchedule.when, '%Y-%m-%d %h:%i') AS Date
+            SELECT TRIM(P.name) AS Patient, 
+                TRIM(D.name) AS Surgeon, 
+                DATE_FORMAT(SurgerySchedule.when, '%Y-%m-%d %h:%i') AS Date,
+                roomNum,
+                wing,
+                clinicID
             FROM Persons P, 
                 Persons D, 
                 Patients, 
                 Surgeons, 
                 SurgerySchedule,
-                OperatingTheatre, TODO
+                Room
             WHERE Patients.ID = SurgerySchedule.patientID
                 and Surgeons.ID = SurgerySchedule.surgeonID
                 and P.ID = Patients.ID
                 and D.ID = Surgeons.ID
+                and SurgerySchedule.theatreID = Room.ID
                 and Patients.ID = ?
             <sql:param value="${param.patientID}"/>
         </sql:query>

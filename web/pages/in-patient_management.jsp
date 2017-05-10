@@ -40,9 +40,9 @@
                 <tr>
                     <td><a href="ipm/v_sched_surg_surg_day.jsp">View scheduled surgery per surgeon and per day</a></td>
                 </tr>
-                <tr>
+<!--                <tr>
                     <td><a href="ipm/book_surg.jsp">Book a surgery</a></td>
-                </tr>
+                </tr>-->
 <!--                <tr>
                     <td><a href="ipm/v_sched_surg_pat.jsp">View scheduled surgery per patient</a></td>
                 </tr>-->
